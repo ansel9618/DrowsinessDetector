@@ -1,0 +1,162 @@
+Tutorial 
+https://www.youtube.com/watch?v=19LQRx78QVU&t=2341s
+
+overall view
+-------------
+
+1)Install Ultralytics YOLO
+2)Label imaes using labellmg with exports to YOLO format
+3)Real time image renderingfrom scratch
+
+rewuirements for working of the model
+-------------------------------------
+
+
+#1)setting up python and jupyter notebook
+===================================================
+Installing anaconda python and jupyter
+
+Installing anaconda: https://www.anaconda.com/products/distribution (version 2021.11)
+helps working with diff version of python and maintaining jupyter notebook or jupyterlab
+
+
+#2) Environment creation workflow and git install
+===================================================
+
+installing git for version control
+
+https://github.com/git-for-windows/git/releases/download/v2.40.0.windows.1/Git-2.40.0-64-bit.exe
+
+after git is installed we can clone an repo from git hub to your system
+
+
+
+Note: In jupyer environment is referred to as kernels
+by default there will be a generic one (Python 3 (ipykernel))
+and we have options to change the kernel
+
+so now we need to create a kernel and associate it with our notebook
+so that each project gets its own specific version required so that the project works
+so we need to create a environment and associate it to jupyter so that it can pick up
+
+
+creating venv in windows:
+--------------------------
+
+1)create env in same folder in which we are doing our project
+
+
+open anaconda prompt go to folder and type below command
+
+eg:
+D:\DL\ImageClassification>python -m venv imageclassification
+
+activating venv
+--------------
+
+(base) D:\ImageClassification>.\imageclassification\scripts\activate
+
+(imageclassification) (base) D:\ImageClassification>
+
+now still when we open jupyter lab it will be running in (Python 3 (ipykernel))
+
+so we need to install ipykernel
+
+
+(imageclassification) (base) D:\ImageClassification>pip install ipykernel
+
+Note:ipykernel allows us to attach a venv toa  jupyter notebook
+
+af installation we can sheck using;- pip list
+
+
+
+now we need to use the kernel for that type in below command
+(imageclassification) (base) D:\ImageClassification>python -m ipykernel install --name=imageclassification
+
+
+to get list of all jupyter kernels created
+---------------------------------------------
+(imageclassification) D:\DL\ImageClassification>jupyter kernelspec list
+
+
+to uninstall kernelspec
+-------------------------
+(imageclassification) D:\DL\ImageClassification>jupyter kernelspec uninstall imageclassification
+Kernel specs to remove:
+  imageclassification   C:\ProgramData\jupyter\kernels\imageclassification
+Remove 1 kernel specs [y/N]: y
+Removed C:\ProgramData\jupyter\kernels\imageclassification
+
+
+**we will be working on drowsiness detector so follow below code
+*above are the steps to create the venv in order to move forward
+---------------------------------------------------------------------------------------
+
+
+
+********************
+D:\DL>cd DrowsinessDetector
+
+D:\DL\DrowsinessDetector>.\DrowsinessDetector\scripts\activate
+(DrowsinessDetector) D:\DL\DrowsinessDetector>jupyter notebook
+
+
+***************rest will be installed and explained in jupyter notebook***********
+
+#3) Installing tensorflow for deep learning
+===========================================
+https://www.tensorflow.org/install/pip
+
+for installing tensorflow we need be using python 3.7-3.10(in our case python 3.9.6)
+
+!pip install tensorflow==2.8.0 tensorflow-gpu==2.8.0 opencv-python matplotlib
+
+only install the followinfg modules delete unwanted modules
+
+tensorboard                  2.8.0
+tensorboard-data-server      0.6.1
+tensorboard-plugin-wit       1.8.1
+tensorflow                   2.8.0
+tensorflow-gpu               2.8.0
+tensorflow-io-gcs-filesystem 0.31.0
+termcolor                    2.2.0
+
+also we need to install Microsoft visual C++ redistributable for visual studio code(version 2019)
+make sure to tick Desktop development with C++
+
+
+#4) Enable GPU for computation accelaration
+===========================================
+
+without gpu it takes more time to execute close to 800ms
+and with gpu it becomes much faster
+
+1)configuring gpu:
+we can directly use
+
+https://www.tensorflow.org/install/pip#step-by-step_instructions
+
+conda install -c conda-forge cudatoolkit=11.2 cudnn=8.1.0
+
+ or 
+long way:
+--------
+
+install CUDA 11.2 --https://developer.nvidia.com/cuda-11.2.0-download-archive?target_os=Windows&target_arch=x86_64&target_version=10&target_type=exelocal
+and cuDNN 8.1 --https://developer.nvidia.com/rdp/cudnn-archive
+
+
+once installed extract the cudnn adn copy files in bin,include,lib->x64 from cudnn folder in downloads to respective folder(bin,include,lib->x64) of Cuda in C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.2
+
+
+updating the path
+------------------
+C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.2\bin
+C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.2\libnvvp
+C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.2\extras\CUPTI\lib64
+
+refer image on how to update path variables "updating path variables.png"
+
+
+
